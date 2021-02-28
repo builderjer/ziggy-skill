@@ -10,9 +10,11 @@ Mycroft.Delegate {
     FontLoader { id: ziggyfont; source: "fonts/Ziggy.ttf" }
 
     background: Image {
+        id: image
         source: Qt.resolvedUrl("img/idle.png")
         anchors.fill: parent
         fillMode: Image.PreserveAspectCrop
+
     }
     Label {
         id: title
@@ -24,6 +26,17 @@ Mycroft.Delegate {
         color: "#00e6e6"
         text: sessionData.title
     }
+    Label {
+        id: text1
+        font.pixelSize: 120
+        anchors.topMargin: 10
+        anchors.top: title.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        font.family: ziggyfont.name
+        color: "#00e6e6"
+        text: sessionData.time
+    }
+
     // ColumnLayout {
     //
     //     id: grid
@@ -76,3 +89,9 @@ Mycroft.Delegate {
     //     }
     // }
 }
+
+/*##^##
+Designer {
+    D{i:0;autoSize:true;formeditorZoom:0.5;height:720;width:1280}
+}
+##^##*/

@@ -18,6 +18,7 @@
 from adapt.intent import IntentBuilder
 from mycroft import MycroftSkill, intent_handler
 from mycroft.skills import resting_screen_handler
+from mycroft.skills.skill_loader import load_skill_module
 
 class Ziggy(MycroftSkill):
     def __init__(self):
@@ -31,19 +32,13 @@ class Ziggy(MycroftSkill):
         # Make Import For TimeData
         try:
             time_date_path = "/opt/mycroft/skills/skill-date-time.builderjer/__init__.py"
-            time_date_id = "datetimeskill"
+            time_date_id = "timedateskill"
             datetimeskill = load_skill_module(time_date_path, time_date_id)
             from datetimeskill import TimeSkill
             self.dt_skill = TimeSkill()
-            self.gui["time"] = self.dt_skill.get_display_current_time()
-            self.gui["date"] = self.dt_skill.get_display_date()
-            self.gui["weekday"] = self.dt_skill.get_weekday()
-            
 
         except:
             print("Failed To Import DateTime Skill")
-
-        self.gui["title"] = self.name
 
     @intent_handler(IntentBuilder('ShowHomeScreen').require('HomeScreenKeyword'))
     def handle_show_home_screen_intent(self, message):
@@ -61,6 +56,9 @@ class Ziggy(MycroftSkill):
         self.log.info("Ziggy main home screen")
         self.gui.clear()
         self.gui["title"] = self.name
+        self.gui["time"] = self.dt_skill.get_display_current_time()
+        self.gui["date"] = self.dt_skill.get_display_date()
+        self.gui["weekday"] = self.dt_skill.get_weekday()
         self.gui.show_page("idle.qml")
     #
     # @intent_handler(IntentBuilder('HelloWorldIntent')
