@@ -27,7 +27,7 @@ Mycroft.Delegate {
         text: sessionData.title
     }
     Label {
-        id: text1
+        id: timeLabel
         font.pixelSize: 120
         anchors.topMargin: 10
         anchors.top: title.bottom
@@ -36,7 +36,26 @@ Mycroft.Delegate {
         color: "#00e6e6"
         text: sessionData.time
     }
-
+    Label {
+      id: weekdayLabel
+      font.pixelSize: 50
+      anchors.topMargin: 10
+      anchors.top: timeLabel.bottom
+      anchors.horizontalCenter: parent.horizontalCenter
+      font.family: ziggyfont.name
+      color: "#00e6e6"
+      text: sessionData.weekday
+    }
+    Label {
+      id: dateLable
+      font.pixelSize: 50
+      anchors.topMargin: 10
+      anchors.top: weekdayLabel.bottom
+      anchors.horizontalCenter: parent.horizontalCenter
+      font.family: ziggyfont.name
+      color: "#00e6e6"
+      text: sessionData.date
+    }
     // ColumnLayout {
     //
     //     id: grid

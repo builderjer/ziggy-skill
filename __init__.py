@@ -32,7 +32,7 @@ class Ziggy(MycroftSkill):
         # Make Import For TimeData
         try:
             time_date_path = "/opt/mycroft/skills/skill-date-time.builderjer/__init__.py"
-            time_date_id = "timedateskill"
+            time_date_id = "skilldatetime"
             datetimeskill = load_skill_module(time_date_path, time_date_id)
             from datetimeskill import TimeSkill
             self.dt_skill = TimeSkill()
